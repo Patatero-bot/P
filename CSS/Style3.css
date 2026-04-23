@@ -1,0 +1,112 @@
+:root {
+    /* Variables de tema principales */
+    --primary-color: #0b64c9;
+    --card-title-color: #0b64c9; 
+    --secondary-color: #dc3545;
+    --background-light: #f8f9fa;
+    --text-light: #000000;
+    --background-dark: #121212;
+    --text-dark: #ffffff;
+    --card-bg: #ffffff;
+    --card-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Modo oscuro */
+.dark-mode {
+    --background-light: var(--background-dark);
+    --text-light: var(--text-dark);
+    --card-bg: #1e1e1e;
+    --card-shadow: rgba(255, 255, 255, 0.1);
+    --primary-color: #553166da;
+    
+    /* Mejor legibilidad */
+    --card-title-color: #e0e0e0;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-light);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px var(--card-shadow);
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilos para tarjetas de cartas Digimon */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--card-shadow);
+    margin: 15px;
+    padding: 15px;
+    display: inline-block;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.2s, background-color 0.3s, color 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+
+.card h3 {
+    color: var(--card-title-color); 
+    margin: 10px 0;
+}
+
+.card p {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #c82333;
+}
+
+/* Activar modo oscuro */
+#dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}

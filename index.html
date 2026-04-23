@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es">
+<head> 
+    <!-- Configuración básica del documento -->
+    <meta charset="utf-8" /> <!-- Permite caracteres especiales -->
+    <meta name="viewport" content="width=device-width,initial-scale=1" /> <!-- Diseño responsive -->
+    
+    <title>Cartas TCG Digimon</title> <!-- Título de la pestaña -->
+    <meta name="description" content="Venta de cartas TCG Digimon - colecciones, sobres y cartas sueltas." />
+    <!-- Enlace a hoja de estilos CSS -->
+    <link type="text/css" rel="stylesheet" href="CSS/Style3.css" />
+    <!-- Ícono de la pestaña -->
+    <link type="image/x-icon" rel="shortcut icon" href="IMG/ICON/images.ico" />
+</head>
+
+<body>
+    <header>
+        <div class="brand">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <rect width="24" height="24" rx="6" fill="#0b5cff"/>
+                <text x="12" y="16" font-size="12" text-anchor="middle" fill="#fff" font-family="sans-serif">DG</text>
+            </svg>
+            
+            <!-- Nombre de la tienda -->
+            <div>
+                <div>Tienda Digimon TCG</div>
+                <small style="color:var(--muted)">Cartas, sobres y accesorios</small>
+            </div>
+        </div>
+
+        <!-- Menú de navegación -->
+        <nav aria-label="Navegación principal">
+            <ul style="display: flex; list-style: none; padding: 0; margin: 0;">
+                <li><a href="#" style="margin-right: 1rem;">Inicio</a></li>
+                <li><a href="#" style="margin-right: 1rem;">Productos</a></li>
+                <li><a href="#" style="margin-right: 1rem;">Ofertas</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+        <!-- Barra de búsqueda -->
+        <div class="search" role="search">
+            <form>
+                <input type="search" placeholder="Buscar carta, colección..." aria-label="Buscar productos" />
+            </form>
+        </div>
+        <!-- Botón para activar modo oscuro -->
+        <button id="dark-mode-toggle" type="button" style="margin-left: 1rem;">
+            Modo Oscuro
+        </button>
+    </header>
+
+    <main>
+        <!-- Barra lateral con filtros -->
+        <aside>
+            <div class="filters" aria-labelledby="filtros">
+                <h2 id="filtros">Filtros</h2>
+
+                <!-- Filtro por tipo -->
+                <div class="filter-group">
+                    <label><input type="checkbox" /> Legend</label>
+                    <label><input type="checkbox" /> Mega</label>
+                    <label><input type="checkbox" /> Rookie</label>
+                </div>
+
+                <!-- Filtro por precio -->
+                <h2 style="margin-top:1rem">Precio</h2>
+                <div class="filter-group">
+                    <label><input type="radio" name="precio" /> Todos</label>
+                    <label><input type="radio" name="precio" /> Menos de $5.000</label>
+                    <label><input type="radio" name="precio" /> $5.000 - $20.000</label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Sección principal de productos -->
+        <section>
+            <header style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+                <h1 style="margin:0;font-size:1.25rem">Cartas destacadas</h1>
+                <div style="color:var(--muted)">Mostrando 6 resultados</div>
+            </header>
+
+            <!--Productos -->
+            <div class="products" aria-live="polite">
+
+                <!-- Tarjeta de producto -->
+                <article class="card" role="article">
+                    <div class="media">
+                        <img src="IMG/Cartas/1.webp" alt="Greymon - Carta Digimon" />
+                    </div>
+                    <h3>Greymon (Holográfica)</h3>
+                    <p class="desc">Carta rara holo, perfecto estado, edición limitada.</p>
+                    <div class="meta">
+                        <div class="price">$15.000</div>
+                        <button class="btn" type="button">Añadir</button>
+                    </div>
+                </article>
+
+                <!-- Repetición de tarjetas de producto -->
+                <article class="card">
+                    <div class="media">
+                        <img src="IMG/Cartas/2.webp" alt="Agumon - Carta Digimon" />
+                    </div>
+                    <h3>Agumon</h3>
+                    <p class="desc">Común, ideal para mazos de inicio.</p>
+                    <div class="meta">
+                        <div class="price">$1.500</div>
+                        <button class="btn">Añadir</button>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="media">
+                        <img src="IMG/Cartas/3.webp" alt="Omnimon - Carta Digimon" />
+                    </div>
+                    <h3>Omnimon (Promo)</h3>
+                    <p class="desc">Promo exclusiva, edición de colección.</p>
+                    <div class="meta">
+                        <div class="price">$45.000</div>
+                        <button class="btn">Añadir</button>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="media">
+                        <img src="IMG/Cartas/4.webp " alt="MetalGreymon - Carta Digimon" />
+                    </div>
+                    <h3>MetalGreymon</h3>
+                    <p class="desc">Carta rara, buen estado.</p>
+                    <div class="meta">
+                        <div class="price">$9.000</div>
+                        <button class="btn">Añadir</button>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="media">
+                        <img src="IMG/Cartas/5.webp" alt="WarGreymon - Carta Digimon" />
+                    </div>
+                    <h3>WarGreymon</h3>
+                    <p class="desc">Edición especial, holográfica parcial.</p>
+                    <div class="meta">
+                        <div class="price">$29.000</div>
+                        <button class="btn">Añadir</button>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="media">
+                        <img src="IMG/Cartas/6.webp" alt="Patamon - Carta Digimon" />
+                    </div>
+                    <h3>Patamon</h3>
+                    <p class="desc">Común, ideal para intercambios.</p>
+                    <div class="meta">
+                        <div class="price">$2.000</div>
+                        <button class="btn">Añadir</button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        © <span id="year"></span> Tienda Digimon TCG — Envíos internacionales disponibles
+
+        <!--actualizar automáticamente el año -->
+        <script>
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
+
+        <!--activar/desactivar modo oscuro -->
+        <script>
+            const toggle = document.getElementById('dark-mode-toggle');
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+            });
+        </script>
+    </footer>
+</body>
+</html>
