@@ -1,182 +1,351 @@
-   <!-- HOLA -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-<head> 
+<head>
     <!-- Configuración básica del documento -->
-    <meta charset="utf-8" /> <!-- Permite caracteres especiales -->
-    <meta name="viewport" content="width=device-width,initial-scale=1" /> <!-- Diseño responsive -->
-    
-    <title>Cartas TCG Digimon</title> <!-- Título de la pestaña -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tienda Digimon TCG</title>
     <meta name="description" content="Venta de cartas TCG Digimon - colecciones, sobres y cartas sueltas." />
-    <!-- Enlace a hoja de estilos CSS -->
+
+    <!-- Hoja de estilos principal -->
     <link type="text/css" rel="stylesheet" href="CSS/Style3.css" />
-    <!-- Ícono de la pestaña -->
     <link type="image/x-icon" rel="shortcut icon" href="IMG/ICON/images.ico" />
 </head>
 
 <body>
+
+    <!-- ===================== HEADER / NAV ===================== -->
     <header>
         <div class="brand">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <rect width="24" height="24" rx="6" fill="#0b5cff"/>
                 <text x="12" y="16" font-size="12" text-anchor="middle" fill="#fff" font-family="sans-serif">DG</text>
             </svg>
-            
-            <!-- Nombre de la tienda -->
             <div>
                 <div>Tienda Digimon TCG</div>
                 <small style="color:var(--muted)">Cartas, sobres y accesorios</small>
             </div>
         </div>
 
-        <!-- Menú de navegación -->
+        <!-- Menú de navegación semántico -->
         <nav aria-label="Navegación principal">
-            <ul style="display: flex; list-style: none; padding: 0; margin: 0;">
-                <li><a href="#" style="margin-right: 1rem;">Inicio</a></li>
-                <li><a href="#" style="margin-right: 1rem;">Productos</a></li>
-                <li><a href="#" style="margin-right: 1rem;">Ofertas</a></li>
-                <li><a href="#">Contacto</a></li>
+            <ul class="nav-list">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#inscripcion">Inscripción</a></li>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
+
         <!-- Barra de búsqueda -->
         <div class="search" role="search">
             <form>
                 <input type="search" placeholder="Buscar carta, colección..." aria-label="Buscar productos" />
             </form>
         </div>
-        <!-- Botón para activar modo oscuro -->
-        <button id="dark-mode-toggle" type="button" style="margin-left: 1rem;">
-            Modo Oscuro
-        </button>
+
+        <!-- Modo oscuro -->
+        <button id="dark-mode-toggle" type="button" aria-label="Activar modo oscuro">🌙 Modo Oscuro</button>
     </header>
 
+    <!-- ===================== MAIN ===================== -->
     <main>
-        <!-- Barra lateral con filtros -->
-        <aside>
-            <div class="filters" aria-labelledby="filtros">
-                <h2 id="filtros">Filtros</h2>
 
-                <!-- Filtro por tipo -->
-                <div class="filter-group">
-                    <label><input type="checkbox" /> Legend</label>
-                    <label><input type="checkbox" /> Mega</label>
-                    <label><input type="checkbox" /> Rookie</label>
+        <!-- ===== SECCIÓN 1: CARRUSEL ===== -->
+        <section id="inicio" class="seccion-carrusel" aria-label="Carrusel de imágenes destacadas">
+            <h2 class="seccion-titulo">✨ Novedades Digimon TCG</h2>
+
+            <div class="carousel" id="carousel" role="region" aria-label="Carrusel" aria-live="polite">
+
+                <!-- Slide 1 -->
+                <div class="slide active" id="slide-0">
+                    <img src="IMG/Cartas/1.webp" alt="Greymon Holográfica - carta destacada de la semana" />
+                    <div class="slide-caption">
+                        <h3>Greymon Holográfica</h3>
+                        <p>Carta rara de la semana — ¡Disponible ahora!</p>
+                    </div>
                 </div>
 
-                <!-- Filtro por precio -->
-                <h2 style="margin-top:1rem">Precio</h2>
-                <div class="filter-group">
-                    <label><input type="radio" name="precio" /> Todos</label>
-                    <label><input type="radio" name="precio" /> Menos de $5.000</label>
-                    <label><input type="radio" name="precio" /> $5.000 - $20.000</label>
+                <!-- Slide 2 -->
+                <div class="slide" id="slide-1">
+                    <img src="IMG/Cartas/3.webp" alt="Omnimon Promo - carta de colección exclusiva" />
+                    <div class="slide-caption">
+                        <h3>Omnimon Promo</h3>
+                        <p>Edición de colección exclusiva — ¡Pocas unidades!</p>
+                    </div>
                 </div>
-            </div>
-        </aside>
 
-        <!-- Sección principal de productos -->
-        <section>
-            <header style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-                <h1 style="margin:0;font-size:1.25rem">Cartas destacadas</h1>
-                <div style="color:var(--muted)">Mostrando 6 resultados</div>
-            </header>
+                <!-- Slide 3 -->
+                <div class="slide" id="slide-2">
+                    <img src="IMG/Cartas/5.webp" alt="WarGreymon - edición especial holográfica parcial" />
+                    <div class="slide-caption">
+                        <h3>WarGreymon Especial</h3>
+                        <p>Holográfica parcial — Edición limitada 2024</p>
+                    </div>
+                </div>
 
-            <!--Productos -->
-            <div class="products" aria-live="polite">
+                <!-- Controles del carrusel -->
+                <button class="carousel-btn carousel-btn--prev" type="button"
+                        onclick="cambiarImagen(-1)" aria-label="Imagen anterior">&#8249;</button>
+                <button class="carousel-btn carousel-btn--next" type="button"
+                        onclick="cambiarImagen(1)" aria-label="Imagen siguiente">&#8250;</button>
 
-                <!-- Tarjeta de producto -->
-                <article class="card" role="article">
-                    <div class="media">
-                        <img src="IMG/Cartas/1.webp" alt="Greymon - Carta Digimon" />
-                    </div>
-                    <h3>Greymon (Holográfica)</h3>
-                    <p class="desc">Carta rara holo, perfecto estado, edición limitada.</p>
-                    <div class="meta">
-                        <div class="price">$15.000</div>
-                        <button class="btn" type="button">Añadir</button>
-                    </div>
-                </article>
-
-                <!-- Repetición de tarjetas de producto -->
-                <article class="card">
-                    <div class="media">
-                        <img src="IMG/Cartas/2.webp" alt="Agumon - Carta Digimon" />
-                    </div>
-                    <h3>Agumon</h3>
-                    <p class="desc">Común, ideal para mazos de inicio.</p>
-                    <div class="meta">
-                        <div class="price">$1.500</div>
-                        <button class="btn">Añadir</button>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="media">
-                        <img src="IMG/Cartas/3.webp" alt="Omnimon - Carta Digimon" />
-                    </div>
-                    <h3>Omnimon (Promo)</h3>
-                    <p class="desc">Promo exclusiva, edición de colección.</p>
-                    <div class="meta">
-                        <div class="price">$45.000</div>
-                        <button class="btn">Añadir</button>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="media">
-                        <img src="IMG/Cartas/4.webp " alt="MetalGreymon - Carta Digimon" />
-                    </div>
-                    <h3>MetalGreymon</h3>
-                    <p class="desc">Carta rara, buen estado.</p>
-                    <div class="meta">
-                        <div class="price">$9.000</div>
-                        <button class="btn">Añadir</button>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="media">
-                        <img src="IMG/Cartas/5.webp" alt="WarGreymon - Carta Digimon" />
-                    </div>
-                    <h3>WarGreymon</h3>
-                    <p class="desc">Edición especial, holográfica parcial.</p>
-                    <div class="meta">
-                        <div class="price">$29.000</div>
-                        <button class="btn">Añadir</button>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="media">
-                        <img src="IMG/Cartas/6.webp" alt="Patamon - Carta Digimon" />
-                    </div>
-                    <h3>Patamon</h3>
-                    <p class="desc">Común, ideal para intercambios.</p>
-                    <div class="meta">
-                        <div class="price">$2.000</div>
-                        <button class="btn">Añadir</button>
-                    </div>
-                </article>
-
+                <!-- Indicadores -->
+                <div class="carousel-dots" aria-label="Indicadores de diapositiva">
+                    <span class="dot active" onclick="irASlide(0)" aria-label="Ir a imagen 1"></span>
+                    <span class="dot"        onclick="irASlide(1)" aria-label="Ir a imagen 2"></span>
+                    <span class="dot"        onclick="irASlide(2)" aria-label="Ir a imagen 3"></span>
+                </div>
             </div>
         </section>
+
+        <!-- ===== LAYOUT: SIDEBAR + PRODUCTOS ===== -->
+        <div class="main-layout">
+
+            <!-- Barra lateral con filtros -->
+            <aside>
+                <div class="filters" aria-labelledby="filtros-titulo">
+                    <h2 id="filtros-titulo">Filtros</h2>
+
+                    <div class="filter-group">
+                        <p><strong>Tipo</strong></p>
+                        <label><input type="checkbox" /> Legend</label>
+                        <label><input type="checkbox" /> Mega</label>
+                        <label><input type="checkbox" /> Rookie</label>
+                    </div>
+
+                    <h2 style="margin-top:1rem">Precio</h2>
+                    <div class="filter-group">
+                        <label><input type="radio" name="precio" checked /> Todos</label>
+                        <label><input type="radio" name="precio" /> Menos de $5.000</label>
+                        <label><input type="radio" name="precio" /> $5.000 - $20.000</label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ===== SECCIÓN 2: PRODUCTOS ===== -->
+            <section id="productos" aria-label="Catálogo de productos">
+                <header style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+                    <h1 style="margin:0;font-size:1.25rem">Cartas destacadas</h1>
+                    <div style="color:var(--muted)">Mostrando 6 resultados</div>
+                </header>
+
+                <div class="products" aria-live="polite">
+
+                    <article class="card" role="article">
+                        <div class="media">
+                            <img src="IMG/Cartas/1.webp" alt="Greymon - Carta Digimon" />
+                        </div>
+                        <h3>Greymon (Holográfica)</h3>
+                        <p class="desc">Carta rara holo, perfecto estado, edición limitada.</p>
+                        <div class="meta">
+                            <div class="price">$15.000</div>
+                            <button class="btn" type="button" onclick="agregarAlCarrito('Greymon Holográfica', 15000)">Añadir</button>
+                        </div>
+                    </article>
+
+                    <article class="card" role="article">
+                        <div class="media">
+                            <img src="IMG/Cartas/2.webp" alt="Agumon - Carta Digimon" />
+                        </div>
+                        <h3>Agumon</h3>
+                        <p class="desc">Común, ideal para mazos de inicio.</p>
+                        <div class="meta">
+                            <div class="price">$1.500</div>
+                            <button class="btn" type="button" onclick="agregarAlCarrito('Agumon', 1500)">Añadir</button>
+                        </div>
+                    </article>
+
+                    <article class="card" role="article">
+                        <div class="media">
+                            <img src="IMG/Cartas/3.webp" alt="Omnimon - Carta Digimon" />
+                        </div>
+                        <h3>Omnimon (Promo)</h3>
+                        <p class="desc">Promo exclusiva, edición de colección.</p>
+                        <div class="meta">
+                            <div class="price">$45.000</div>
+                            <button class="btn" type="button" onclick="agregarAlCarrito('Omnimon Promo', 45000)">Añadir</button>
+                        </div>
+                    </article>
+
+                    <article class="card" role="article">
+                        <div class="media">
+                            <img src="IMG/Cartas/4.webp" alt="MetalGreymon - Carta Digimon" />
+                        </div>
+                        <h3>MetalGreymon</h3>
+                        <p class="desc">Carta rara, buen estado.</p>
+                        <div class="meta">
+                            <div class="price">$9.000</div>
+                            <button class="btn" type="button" onclick="agregarAlCarrito('MetalGreymon', 9000)">Añadir</button>
+                        </div>
+                    </article>
+
+                    <article class="card" role="article">
+                        <div class="media">
+                            <img src="IMG/Cartas/5.webp" alt="WarGreymon - Carta Digimon" />
+                        </div>
+                        <h3>WarGreymon</h3>
+                        <p class="desc">Edición especial, holográfica parcial.</p>
+                        <div class="meta">
+                            <div class="price">$29.000</div>
+                            <button class="btn" type="button" onclick="agregarAlCarrito('WarGreymon', 29000)">Añadir</button>
+                        </div>
+                    </article>
+
+                    <article class="card" role="article">
+                        <div class="media">
+                            <img src="IMG/Cartas/6.webp" alt="Patamon - Carta Digimon" />
+                        </div>
+                        <h3>Patamon</h3>
+                        <p class="desc">Común, ideal para intercambios.</p>
+                        <div class="meta">
+                            <div class="price">$2.000</div>
+                            <button class="btn" type="button" onclick="agregarAlCarrito('Patamon', 2000)">Añadir</button>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+        </div><!-- fin .main-layout -->
+
+        <!-- ===== SECCIÓN 3: FORMULARIO DE INSCRIPCIÓN ===== -->
+        <section id="inscripcion" class="form-section" aria-labelledby="titulo-inscripcion">
+            <h2 id="titulo-inscripcion">📋 Crear cuenta</h2>
+            <p>Regístrate para acceder a precios exclusivos y seguimiento de pedidos.</p>
+
+            <div id="msg-inscripcion" class="form-msg" role="alert" aria-live="polite"></div>
+
+            <form id="form-inscripcion" class="formulario" novalidate>
+
+                <div class="form-group">
+                    <label for="reg-nombre">Nombre completo <span class="req">*</span></label>
+                    <input type="text" id="reg-nombre" name="nombre"
+                           placeholder="Ej: Tai Kamiya" autocomplete="name" />
+                    <span class="error-msg" id="error-reg-nombre"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-email">Correo electrónico <span class="req">*</span></label>
+                    <input type="email" id="reg-email" name="email"
+                           placeholder="tai@digiworld.com" autocomplete="email" />
+                    <span class="error-msg" id="error-reg-email"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-password">Contraseña <span class="req">*</span></label>
+                    <input type="password" id="reg-password" name="password"
+                           placeholder="Mínimo 8 caracteres" autocomplete="new-password" />
+                    <span class="error-msg" id="error-reg-password"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-confirm">Confirmar contraseña <span class="req">*</span></label>
+                    <input type="password" id="reg-confirm" name="confirm"
+                           placeholder="Repite tu contraseña" autocomplete="new-password" />
+                    <span class="error-msg" id="error-reg-confirm"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-telefono">Teléfono <span class="opcional">(opcional)</span></label>
+                    <input type="tel" id="reg-telefono" name="telefono"
+                           placeholder="+56 9 1234 5678" autocomplete="tel" />
+                    <span class="error-msg" id="error-reg-telefono"></span>
+                </div>
+
+                <button type="button" class="btn-form" onclick="registrarUsuario()">Crear cuenta</button>
+            </form>
+
+            <!-- Lista de inscritos (para demostración) -->
+            <div id="lista-inscritos-wrapper" class="lista-inscritos" style="display:none">
+                <h3>👥 Usuarios registrados en esta sesión</h3>
+                <ul id="lista-inscritos"></ul>
+            </div>
+        </section>
+
+        <!-- ===== SECCIÓN 4: FORMULARIO DE LOGIN ===== -->
+        <section id="login" class="form-section" aria-labelledby="titulo-login">
+            <h2 id="titulo-login">🔐 Iniciar sesión</h2>
+            <p>Accede a tu cuenta para ver tus pedidos y colecciones guardadas.</p>
+
+            <div id="msg-login" class="form-msg" role="alert" aria-live="polite"></div>
+
+            <form id="form-login" class="formulario" novalidate>
+
+                <div class="form-group">
+                    <label for="login-email">Correo electrónico <span class="req">*</span></label>
+                    <input type="email" id="login-email" name="email"
+                           placeholder="tu@correo.com" autocomplete="email" />
+                    <span class="error-msg" id="error-login-email"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Contraseña <span class="req">*</span></label>
+                    <input type="password" id="login-password" name="password"
+                           placeholder="Tu contraseña" autocomplete="current-password" />
+                    <span class="error-msg" id="error-login-password"></span>
+                </div>
+
+                <div class="form-group form-check">
+                    <label class="check-label">
+                        <input type="checkbox" id="login-recordar" name="recordar" />
+                        Recordarme en este equipo
+                    </label>
+                </div>
+
+                <button type="button" class="btn-form" onclick="iniciarSesion()">Iniciar sesión</button>
+            </form>
+        </section>
+
+        <!-- ===== SECCIÓN 5: FORMULARIO DE CONTACTO ===== -->
+        <section id="contacto" class="form-section" aria-labelledby="titulo-contacto">
+            <h2 id="titulo-contacto">💬 Contacto</h2>
+            <p>¿Tienes dudas sobre una carta o pedido? Escríbenos y te respondemos pronto.</p>
+
+            <div id="msg-contacto" class="form-msg" role="alert" aria-live="polite"></div>
+
+            <form id="form-contacto" class="formulario" novalidate>
+
+                <div class="form-group">
+                    <label for="cont-nombre">Nombre <span class="req">*</span></label>
+                    <input type="text" id="cont-nombre" name="nombre"
+                           placeholder="Tu nombre" autocomplete="name" />
+                    <span class="error-msg" id="error-cont-nombre"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cont-email">Email <span class="req">*</span></label>
+                    <input type="email" id="cont-email" name="email"
+                           placeholder="tu@correo.com" autocomplete="email" />
+                    <span class="error-msg" id="error-cont-email"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cont-mensaje">Mensaje <span class="req">*</span></label>
+                    <textarea id="cont-mensaje" name="mensaje" rows="5"
+                              placeholder="Escribe tu consulta aquí..."></textarea>
+                    <span class="error-msg" id="error-cont-mensaje"></span>
+                </div>
+
+                <button type="button" class="btn-form" onclick="enviarContacto()">Enviar mensaje</button>
+            </form>
+        </section>
+
     </main>
 
-    <!-- Pie de página -->
+    <!-- ===================== FOOTER ===================== -->
     <footer>
-        © <span id="year"></span> Tienda Digimon TCG — Envíos internacionales disponibles
-
-        <!--actualizar automáticamente el año -->
-        <script>
-            document.getElementById('year').textContent = new Date().getFullYear();
-        </script>
-
-        <!--activar/desactivar modo oscuro -->
-        <script>
-            const toggle = document.getElementById('dark-mode-toggle');
-            toggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-            });
-        </script>
+        <p>© <span id="year"></span> Tienda Digimon TCG — Envíos internacionales disponibles</p>
+        <nav aria-label="Navegación del pie de página">
+            <a href="#inicio">Inicio</a> |
+            <a href="#productos">Productos</a> |
+            <a href="#contacto">Contacto</a>
+        </nav>
     </footer>
+
+    <!-- ===================== JAVASCRIPT ===================== -->
+    <script src="JS/app.js"></script>
+
 </body>
 </html>
