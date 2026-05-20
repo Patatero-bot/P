@@ -34,7 +34,6 @@
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#productos">Productos</a></li>
                 <li><a href="#inscripcion">Inscripción</a></li>
-                <li><a href="#login">Login</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
@@ -48,6 +47,11 @@
 
         <!-- Modo oscuro -->
         <button id="dark-mode-toggle" type="button" aria-label="Activar modo oscuro">🌙 Modo Oscuro</button>
+
+        <!-- Botón Login en el header -->
+        <button id="btn-abrir-login" type="button" class="btn-login-header" onclick="abrirModalLogin()">
+            🔐 Login
+        </button>
     </header>
 
     <!-- ===================== MAIN ===================== -->
@@ -264,39 +268,7 @@
             </div>
         </section>
 
-        <!-- ===== SECCIÓN 4: FORMULARIO DE LOGIN ===== -->
-        <section id="login" class="form-section" aria-labelledby="titulo-login">
-            <h2 id="titulo-login">🔐 Iniciar sesión</h2>
-            <p>Accede a tu cuenta para ver tus pedidos y colecciones guardadas.</p>
-
-            <div id="msg-login" class="form-msg" role="alert" aria-live="polite"></div>
-
-            <form id="form-login" class="formulario" novalidate>
-
-                <div class="form-group">
-                    <label for="login-email">Correo electrónico <span class="req">*</span></label>
-                    <input type="email" id="login-email" name="email"
-                           placeholder="tu@correo.com" autocomplete="email" />
-                    <span class="error-msg" id="error-login-email"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="login-password">Contraseña <span class="req">*</span></label>
-                    <input type="password" id="login-password" name="password"
-                           placeholder="Tu contraseña" autocomplete="current-password" />
-                    <span class="error-msg" id="error-login-password"></span>
-                </div>
-
-                <div class="form-group form-check">
-                    <label class="check-label">
-                        <input type="checkbox" id="login-recordar" name="recordar" />
-                        Recordarme en este equipo
-                    </label>
-                </div>
-
-                <button type="button" class="btn-form" onclick="iniciarSesion()">Iniciar sesión</button>
-            </form>
-        </section>
+        <!-- ===== SECCIÓN 4: LOGIN (ahora es modal, ver #modal-login abajo) ===== -->
 
         <!-- ===== SECCIÓN 5: FORMULARIO DE CONTACTO ===== -->
         <section id="contacto" class="form-section" aria-labelledby="titulo-contacto">
@@ -343,6 +315,65 @@
             <a href="#contacto">Contacto</a>
         </nav>
     </footer>
+
+    <!-- ===================== MODAL LOGIN ===================== -->
+    <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true"
+         aria-labelledby="modal-titulo" style="display:none;">
+
+        <div class="modal-box">
+
+            <!-- Cabecera del modal -->
+            <div class="modal-header">
+                <div class="modal-brand">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect width="24" height="24" rx="6" fill="#0b5cff"/>
+                        <text x="12" y="16" font-size="12" text-anchor="middle" fill="#fff" font-family="sans-serif">DG</text>
+                    </svg>
+                    <span id="modal-titulo">Iniciar sesión</span>
+                </div>
+                <button class="modal-cerrar" type="button" onclick="cerrarModalLogin()"
+                        aria-label="Cerrar">&times;</button>
+            </div>
+
+            <!-- Mensaje de resultado -->
+            <div id="msg-login" class="form-msg" role="alert" aria-live="polite"></div>
+
+            <!-- Formulario de login -->
+            <form id="form-login" class="formulario" novalidate>
+
+                <div class="form-group">
+                    <label for="login-email">Correo electrónico <span class="req">*</span></label>
+                    <input type="email" id="login-email" name="email"
+                           placeholder="tucorreo@gmail.com" autocomplete="email" />
+                    <span class="error-msg" id="error-login-email"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Contraseña <span class="req">*</span></label>
+                    <input type="password" id="login-password" name="password"
+                           placeholder="Tu contraseña" autocomplete="current-password" />
+                    <span class="error-msg" id="error-login-password"></span>
+                </div>
+
+                <div class="form-group form-check">
+                    <label class="check-label">
+                        <input type="checkbox" id="login-recordar" name="recordar" />
+                        Recordarme en este equipo
+                    </label>
+                </div>
+
+                <button type="button" class="btn-form btn-form--full" onclick="iniciarSesion()">
+                    Iniciar sesión
+                </button>
+            </form>
+
+            <!-- Pie del modal -->
+            <p class="modal-footer-text">
+                ¿Aún no tienes cuenta?
+                <a href="#inscripcion" onclick="cerrarModalLogin()">Regístrate aquí</a>
+            </p>
+        </div>
+    </div>
 
     <!-- ===================== JAVASCRIPT ===================== -->
     <script src="JS/app.js"></script>

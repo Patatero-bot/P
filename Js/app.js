@@ -111,16 +111,21 @@ function detenerCarruselAutomatico() {
 
 /**
  * validarEmail(email)
- * Comprueba que el correo tenga formato válido usando expresión regular.
- * Recomendación de seguridad: nunca confiar solo en validación de cliente;
- * siempre validar también en el servidor.
+ * Comprueba que el correo tenga:
+ * - Al menos 8 caracteres antes del @
+ * - Dominio válido después del @
+ * - Extensión de al menos 2 letras
  * @param {string} email
  * @returns {boolean}
  */
 function validarEmail(email) {
-    // Regex estándar para validación de email (RFC 5322 simplificado)
-    const regex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
-    return regex.test(email.trim());
+    const trimmed = email.trim();
+    // Verificar mínimo 8 caracteres antes del @
+    const arroba = trimmed.indexOf("@");
+    if (arroba < 8) return false;
+    // Regex para validar el formato completo
+    const regex = /^[a-zA-Z0-9._%+\-]{8,}@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(trimmed);
 }
 
 /**
@@ -504,6 +509,46 @@ function configurarModoOscuro() {
 }
 
 /* ============================================================
+   MODAL LOGIN (Criterio 2.1.1 — manipulación del DOM)
+   ============================================================ */
+
+/**
+ * abrirModalLogin()
+ * Muestra el overlay oscuro y el modal de login sobre la página.
+ */
+function abrirModalLogin() {
+    const overlay = document.getElementById("modal-overlay");
+    if (!overlay) return;
+    overlay.style.display = "flex";
+    document.body.style.overflow = "hidden"; // evitar scroll de fondo
+    // Enfocar el primer campo automáticamente
+    setTimeout(() => {
+        const emailInput = document.getElementById("login-email");
+        if (emailInput) emailInput.focus();
+    }, 100);
+}
+
+/**
+ * cerrarModalLogin()
+ * Oculta el modal y restaura el scroll de la página.
+ */
+function cerrarModalLogin() {
+    const overlay = document.getElementById("modal-overlay");
+    if (!overlay) return;
+    overlay.style.display = "none";
+    document.body.style.overflow = "";
+    // Limpiar formulario y mensajes al cerrar
+    document.getElementById("form-login").reset();
+    const msg = document.getElementById("msg-login");
+    if (msg) { msg.style.display = "none"; msg.textContent = ""; }
+    // Limpiar errores
+    ["error-login-email", "error-login-password"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) limpiarError(el);
+    });
+}
+
+/* ============================================================
    INICIALIZACIÓN
    ============================================================ */
 
@@ -530,8 +575,17 @@ function init() {
     // Modo oscuro
     configurarModoOscuro();
 
-    // Soporte de teclado para carrusel (accesibilidad)
+    // Cerrar modal al hacer clic en el overlay (fuera de la caja)
+    const overlay = document.getElementById("modal-overlay");
+    if (overlay) {
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) cerrarModalLogin();
+        });
+    }
+
+    // Cerrar modal con la tecla Escape
     document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") cerrarModalLogin();
         if (e.key === "ArrowLeft")  cambiarImagen(-1);
         if (e.key === "ArrowRight") cambiarImagen(1);
     });
