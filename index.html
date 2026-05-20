@@ -33,7 +33,6 @@
             <ul class="nav-list">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#productos">Productos</a></li>
-                <li><a href="#inscripcion">Inscripción</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
@@ -45,8 +44,16 @@
             </form>
         </div>
 
+        <!-- Saludo usuario autenticado (oculto hasta iniciar sesión) -->
+        <span id="saludo-usuario" class="saludo-usuario" style="display:none;"></span>
+
         <!-- Modo oscuro -->
         <button id="dark-mode-toggle" type="button" aria-label="Activar modo oscuro">🌙 Modo Oscuro</button>
+
+        <!-- Botón Inscripción en el header -->
+        <button id="btn-abrir-registro" type="button" class="btn-login-header" onclick="abrirModalRegistro()">
+            📋 Inscripción
+        </button>
 
         <!-- Botón Login en el header -->
         <button id="btn-abrir-login" type="button" class="btn-login-header" onclick="abrirModalLogin()">
@@ -214,61 +221,11 @@
             </section>
         </div><!-- fin .main-layout -->
 
-        <!-- ===== SECCIÓN 3: FORMULARIO DE INSCRIPCIÓN ===== -->
-        <section id="inscripcion" class="form-section" aria-labelledby="titulo-inscripcion">
-            <h2 id="titulo-inscripcion">📋 Crear cuenta</h2>
-            <p>Regístrate para acceder a precios exclusivos y seguimiento de pedidos.</p>
+        <!-- SECCIÓN INSCRIPCIÓN: formulario movido a modal (ver #modal-registro) -->
+        <section id="inscripcion" style="display:none;" aria-hidden="true"></section>
 
-            <div id="msg-inscripcion" class="form-msg" role="alert" aria-live="polite"></div>
-
-            <form id="form-inscripcion" class="formulario" novalidate>
-
-                <div class="form-group">
-                    <label for="reg-nombre">Nombre completo <span class="req">*</span></label>
-                    <input type="text" id="reg-nombre" name="nombre"
-                           placeholder="Ej: Tai Kamiya" autocomplete="name" />
-                    <span class="error-msg" id="error-reg-nombre"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="reg-email">Correo electrónico <span class="req">*</span></label>
-                    <input type="email" id="reg-email" name="email"
-                           placeholder="tai@digiworld.com" autocomplete="email" />
-                    <span class="error-msg" id="error-reg-email"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="reg-password">Contraseña <span class="req">*</span></label>
-                    <input type="password" id="reg-password" name="password"
-                           placeholder="Mínimo 8 caracteres" autocomplete="new-password" />
-                    <span class="error-msg" id="error-reg-password"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="reg-confirm">Confirmar contraseña <span class="req">*</span></label>
-                    <input type="password" id="reg-confirm" name="confirm"
-                           placeholder="Repite tu contraseña" autocomplete="new-password" />
-                    <span class="error-msg" id="error-reg-confirm"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="reg-telefono">Teléfono <span class="opcional">(opcional)</span></label>
-                    <input type="tel" id="reg-telefono" name="telefono"
-                           placeholder="+56 9 1234 5678" autocomplete="tel" />
-                    <span class="error-msg" id="error-reg-telefono"></span>
-                </div>
-
-                <button type="button" class="btn-form" onclick="registrarUsuario()">Crear cuenta</button>
-            </form>
-
-            <!-- Lista de inscritos (para demostración) -->
-            <div id="lista-inscritos-wrapper" class="lista-inscritos" style="display:none">
-                <h3>👥 Usuarios registrados en esta sesión</h3>
-                <ul id="lista-inscritos"></ul>
-            </div>
-        </section>
-
-        <!-- ===== SECCIÓN 4: LOGIN (ahora es modal, ver #modal-login abajo) ===== -->
+        <!-- ===== SECCIÓN 4: LOGIN (modal, ver #modal-overlay abajo) ===== -->
+        <section id="login" style="display:none;" aria-hidden="true"></section>
 
         <!-- ===== SECCIÓN 5: FORMULARIO DE CONTACTO ===== -->
         <section id="contacto" class="form-section" aria-labelledby="titulo-contacto">
@@ -315,6 +272,75 @@
             <a href="#contacto">Contacto</a>
         </nav>
     </footer>
+
+    <!-- ===================== MODAL INSCRIPCIÓN ===================== -->
+    <div id="modal-registro-overlay" class="modal-overlay" role="dialog" aria-modal="true"
+         aria-labelledby="modal-reg-titulo" style="display:none;">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+                <div class="modal-brand">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect width="24" height="24" rx="6" fill="#0b5cff"/>
+                        <text x="12" y="16" font-size="12" text-anchor="middle" fill="#fff" font-family="sans-serif">DG</text>
+                    </svg>
+                    <span id="modal-reg-titulo">Crear cuenta</span>
+                </div>
+                <button class="modal-cerrar" type="button" onclick="cerrarModalRegistro()"
+                        aria-label="Cerrar">&times;</button>
+            </div>
+
+            <div id="msg-inscripcion" class="form-msg" role="alert" aria-live="polite"></div>
+
+            <form id="form-inscripcion" class="formulario" novalidate>
+
+                <div class="form-group">
+                    <label for="reg-nombre">Nombre completo <span class="req">*</span></label>
+                    <input type="text" id="reg-nombre" name="nombre"
+                           placeholder="Ej: Tai Kamiya" autocomplete="name" />
+                    <span class="error-msg" id="error-reg-nombre"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-email">Correo electrónico <span class="req">*</span></label>
+                    <input type="email" id="reg-email" name="email"
+                           placeholder="tai@digiworld.com" autocomplete="email" />
+                    <span class="error-msg" id="error-reg-email"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-password">Contraseña <span class="req">*</span></label>
+                    <input type="password" id="reg-password" name="password"
+                           placeholder="Mínimo 8 caracteres" autocomplete="new-password" />
+                    <span class="error-msg" id="error-reg-password"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-confirm">Confirmar contraseña <span class="req">*</span></label>
+                    <input type="password" id="reg-confirm" name="confirm"
+                           placeholder="Repite tu contraseña" autocomplete="new-password" />
+                    <span class="error-msg" id="error-reg-confirm"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-telefono">Teléfono <span class="opcional">(opcional)</span></label>
+                    <input type="tel" id="reg-telefono" name="telefono"
+                           placeholder="+56 9 1234 5678" autocomplete="tel" />
+                    <span class="error-msg" id="error-reg-telefono"></span>
+                </div>
+
+                <button type="button" class="btn-form btn-form--full" onclick="registrarUsuario()">
+                    Crear cuenta
+                </button>
+            </form>
+
+            <p class="modal-footer-text">
+                ¿Ya tienes cuenta?
+                <a href="#" onclick="cambiarALogin()">Inicia sesión aquí</a>
+            </p>
+        </div>
+    </div>
 
     <!-- ===================== MODAL LOGIN ===================== -->
     <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true"
@@ -370,7 +396,7 @@
             <!-- Pie del modal -->
             <p class="modal-footer-text">
                 ¿Aún no tienes cuenta?
-                <a href="#inscripcion" onclick="cerrarModalLogin()">Regístrate aquí</a>
+                <a href="#" onclick="cambiarARegistro()">Regístrate aquí</a>
             </p>
         </div>
     </div>
