@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Configuración básica del documento -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <title>Tienda Digimon TCG</title>
     <meta name="description" content="Venta de cartas TCG Digimon - colecciones, sobres y cartas sueltas." />
-
-    <!-- Hoja de estilos principal -->
     <link type="text/css" rel="stylesheet" href="CSS/Style3.css" />
     <link type="image/x-icon" rel="shortcut icon" href="IMG/ICON/images.ico" />
 </head>
-
 <body>
 
-    <!-- ===================== HEADER / NAV ===================== -->
     <header>
         <div class="brand">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -28,7 +22,6 @@
             </div>
         </div>
 
-        <!-- Menú de navegación semántico -->
         <nav aria-label="Navegación principal">
             <ul class="nav-list">
                 <li><a href="#inicio">Inicio</a></li>
@@ -37,40 +30,32 @@
             </ul>
         </nav>
 
-        <!-- Barra de búsqueda -->
         <div class="search" role="search">
             <form>
                 <input type="search" placeholder="Buscar carta, colección..." aria-label="Buscar productos" />
             </form>
         </div>
 
-        <!-- Saludo usuario autenticado (oculto hasta iniciar sesión) -->
         <span id="saludo-usuario" class="saludo-usuario" style="display:none;"></span>
 
-        <!-- Modo oscuro -->
         <button id="dark-mode-toggle" type="button" aria-label="Activar modo oscuro">🌙 Modo Oscuro</button>
 
-        <!-- Botón Inscripción en el header -->
         <button id="btn-abrir-registro" type="button" class="btn-login-header" onclick="abrirModalRegistro()">
             📋 Inscripción
         </button>
 
-        <!-- Botón Login en el header -->
         <button id="btn-abrir-login" type="button" class="btn-login-header" onclick="abrirModalLogin()">
             🔐 Login
         </button>
     </header>
 
-    <!-- ===================== MAIN ===================== -->
     <main>
 
-        <!-- ===== SECCIÓN 1: CARRUSEL ===== -->
         <section id="inicio" class="seccion-carrusel" aria-label="Carrusel de imágenes destacadas">
             <h2 class="seccion-titulo">✨ Novedades Digimon TCG</h2>
 
             <div class="carousel" id="carousel" role="region" aria-label="Carrusel" aria-live="polite">
 
-                <!-- Slide 1 -->
                 <div class="slide active" id="slide-0">
                     <img src="IMG/Cartas/1.webp" alt="Greymon Holográfica - carta destacada de la semana" />
                     <div class="slide-caption">
@@ -79,7 +64,6 @@
                     </div>
                 </div>
 
-                <!-- Slide 2 -->
                 <div class="slide" id="slide-1">
                     <img src="IMG/Cartas/3.webp" alt="Omnimon Promo - carta de colección exclusiva" />
                     <div class="slide-caption">
@@ -88,7 +72,6 @@
                     </div>
                 </div>
 
-                <!-- Slide 3 -->
                 <div class="slide" id="slide-2">
                     <img src="IMG/Cartas/5.webp" alt="WarGreymon - edición especial holográfica parcial" />
                     <div class="slide-caption">
@@ -97,13 +80,11 @@
                     </div>
                 </div>
 
-                <!-- Controles del carrusel -->
                 <button class="carousel-btn carousel-btn--prev" type="button"
                         onclick="cambiarImagen(-1)" aria-label="Imagen anterior">&#8249;</button>
                 <button class="carousel-btn carousel-btn--next" type="button"
                         onclick="cambiarImagen(1)" aria-label="Imagen siguiente">&#8250;</button>
 
-                <!-- Indicadores -->
                 <div class="carousel-dots" aria-label="Indicadores de diapositiva">
                     <span class="dot active" onclick="irASlide(0)" aria-label="Ir a imagen 1"></span>
                     <span class="dot"        onclick="irASlide(1)" aria-label="Ir a imagen 2"></span>
@@ -112,10 +93,8 @@
             </div>
         </section>
 
-        <!-- ===== LAYOUT: SIDEBAR + PRODUCTOS ===== -->
         <div class="main-layout">
 
-            <!-- Barra lateral con filtros -->
             <aside>
                 <div class="filters" aria-labelledby="filtros-titulo">
                     <h2 id="filtros-titulo">Filtros</h2>
@@ -136,7 +115,6 @@
                 </div>
             </aside>
 
-            <!-- ===== SECCIÓN 2: PRODUCTOS ===== -->
             <section id="productos" aria-label="Catálogo de productos">
                 <header style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
                     <h1 style="margin:0;font-size:1.25rem">Cartas destacadas</h1>
@@ -219,15 +197,11 @@
 
                 </div>
             </section>
-        </div><!-- fin .main-layout -->
+        </div>
 
-        <!-- SECCIÓN INSCRIPCIÓN: formulario movido a modal (ver #modal-registro) -->
         <section id="inscripcion" style="display:none;" aria-hidden="true"></section>
-
-        <!-- ===== SECCIÓN 4: LOGIN (modal, ver #modal-overlay abajo) ===== -->
         <section id="login" style="display:none;" aria-hidden="true"></section>
 
-        <!-- ===== SECCIÓN 5: FORMULARIO DE CONTACTO ===== -->
         <section id="contacto" class="form-section" aria-labelledby="titulo-contacto">
             <h2 id="titulo-contacto">💬 Contacto</h2>
             <p>¿Tienes dudas sobre una carta o pedido? Escríbenos y te respondemos pronto.</p>
@@ -263,7 +237,6 @@
 
     </main>
 
-    <!-- ===================== FOOTER ===================== -->
     <footer>
         <p>© <span id="year"></span> Tienda Digimon TCG — Envíos internacionales disponibles</p>
         <nav aria-label="Navegación del pie de página">
@@ -273,12 +246,9 @@
         </nav>
     </footer>
 
-    <!-- ===================== MODAL INSCRIPCIÓN ===================== -->
     <div id="modal-registro-overlay" class="modal-overlay" role="dialog" aria-modal="true"
          aria-labelledby="modal-reg-titulo" style="display:none;">
-
         <div class="modal-box">
-
             <div class="modal-header">
                 <div class="modal-brand">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -342,13 +312,9 @@
         </div>
     </div>
 
-    <!-- ===================== MODAL LOGIN ===================== -->
     <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true"
          aria-labelledby="modal-titulo" style="display:none;">
-
         <div class="modal-box">
-
-            <!-- Cabecera del modal -->
             <div class="modal-header">
                 <div class="modal-brand">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -361,10 +327,8 @@
                         aria-label="Cerrar">&times;</button>
             </div>
 
-            <!-- Mensaje de resultado -->
             <div id="msg-login" class="form-msg" role="alert" aria-live="polite"></div>
 
-            <!-- Formulario de login -->
             <form id="form-login" class="formulario" novalidate>
 
                 <div class="form-group">
@@ -393,7 +357,6 @@
                 </button>
             </form>
 
-            <!-- Pie del modal -->
             <p class="modal-footer-text">
                 ¿Aún no tienes cuenta?
                 <a href="#" onclick="cambiarARegistro()">Regístrate aquí</a>
@@ -401,7 +364,6 @@
         </div>
     </div>
 
-    <!-- ===================== JAVASCRIPT ===================== -->
     <script src="JS/app.js"></script>
 
 </body>

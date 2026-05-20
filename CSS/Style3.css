@@ -1,9 +1,3 @@
-/* ============================================================
-   Style3.css — Tienda Digimon TCG
-   Extiende el CSS original con estilos para carrusel, formularios y nuevas secciones
-   ============================================================ */
-
-/* ---------- Variables de tema ---------- */
 :root {
     --primary-color: #0b64c9;
     --card-title-color: #0b64c9;
@@ -24,7 +18,6 @@
     --transition: 0.3s ease;
 }
 
-/* ---------- Modo oscuro ---------- */
 .dark-mode {
     --background-light: var(--background-dark);
     --text-light: var(--text-dark);
@@ -37,7 +30,6 @@
     --muted: #aaa;
 }
 
-/* ---------- Reset y estilos generales ---------- */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -51,9 +43,6 @@ body {
     transition: background-color var(--transition), color var(--transition);
 }
 
-/* ============================================================
-   HEADER / NAV
-   ============================================================ */
 header {
     background-color: var(--primary-color);
     color: white;
@@ -77,7 +66,6 @@ header {
     font-size: 1rem;
 }
 
-/* Nav links */
 .nav-list {
     display: flex;
     list-style: none;
@@ -101,7 +89,6 @@ header {
     color: #fff;
 }
 
-/* Búsqueda */
 .search input {
     padding: 8px 14px;
     border-radius: 20px;
@@ -117,7 +104,6 @@ header {
     color: rgba(255,255,255,0.7);
 }
 
-/* Botón modo oscuro */
 #dark-mode-toggle {
     position: static;
     background: rgba(255,255,255,0.2);
@@ -134,9 +120,6 @@ header {
     background: rgba(255,255,255,0.35);
 }
 
-/* ============================================================
-   LAYOUT PRINCIPAL
-   ============================================================ */
 main {
     max-width: 1200px;
     margin: 0 auto;
@@ -156,9 +139,6 @@ main {
     }
 }
 
-/* ============================================================
-   ASIDE / FILTROS
-   ============================================================ */
 aside {
     background: var(--card-bg);
     border-radius: var(--radius);
@@ -187,9 +167,6 @@ aside {
     cursor: pointer;
 }
 
-/* ============================================================
-   CARRUSEL (Criterio 2.1.1)
-   ============================================================ */
 .seccion-carrusel {
     margin-bottom: 10px;
 }
@@ -210,7 +187,6 @@ aside {
     background: #000;
 }
 
-/* Slides */
 .slide {
     position: absolute;
     inset: 0;
@@ -233,7 +209,6 @@ aside {
     filter: brightness(0.65);
 }
 
-/* Leyenda sobre la imagen */
 .slide-caption {
     position: relative;
     z-index: 2;
@@ -253,7 +228,6 @@ aside {
     opacity: 0.9;
 }
 
-/* Botones Anterior / Siguiente */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -279,15 +253,9 @@ aside {
     background: rgba(255,255,255,0.55);
 }
 
-.carousel-btn--prev {
-    left: 16px;
-}
+.carousel-btn--prev { left: 16px; }
+.carousel-btn--next { right: 16px; }
 
-.carousel-btn--next {
-    right: 16px;
-}
-
-/* Dots indicadores */
 .carousel-dots {
     position: absolute;
     bottom: 16px;
@@ -312,9 +280,6 @@ aside {
     transform: scale(1.3);
 }
 
-/* ============================================================
-   TARJETAS DE PRODUCTOS (estilos originales conservados)
-   ============================================================ */
 .products {
     display: flex;
     flex-wrap: wrap;
@@ -377,9 +342,6 @@ aside {
     color: var(--primary-color);
 }
 
-/* ============================================================
-   BOTONES GENERALES
-   ============================================================ */
 .btn {
     background-color: var(--secondary-color);
     color: white;
@@ -395,9 +357,6 @@ aside {
     background-color: #c82333;
 }
 
-/* ============================================================
-   SECCIONES DE FORMULARIOS (Criterio 2.1.2)
-   ============================================================ */
 .form-section {
     background: var(--form-bg);
     border-radius: var(--radius);
@@ -422,7 +381,6 @@ aside {
     font-size: 0.9rem;
 }
 
-/* Formulario */
 .formulario {
     display: flex;
     flex-direction: column;
@@ -460,7 +418,6 @@ aside {
     box-shadow: 0 0 0 3px rgba(11, 100, 201, 0.15);
 }
 
-/* Estado inválido */
 .form-group input[aria-invalid="true"] {
     border-color: var(--error-color);
     box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
@@ -471,7 +428,6 @@ aside {
     min-height: 120px;
 }
 
-/* Mensajes de error inline */
 .error-msg {
     color: var(--error-color);
     font-size: 0.8rem;
@@ -479,10 +435,7 @@ aside {
     margin-top: 2px;
 }
 
-/* Etiquetas auxiliares */
-.req {
-    color: var(--error-color);
-}
+.req { color: var(--error-color); }
 
 .opcional {
     color: var(--muted);
@@ -490,7 +443,6 @@ aside {
     font-size: 0.8rem;
 }
 
-/* Checkbox en login */
 .form-check {
     flex-direction: row;
     align-items: center;
@@ -505,7 +457,6 @@ aside {
     font-size: 0.9rem;
 }
 
-/* Botón principal de formulario */
 .btn-form {
     background-color: var(--primary-color);
     color: white;
@@ -528,7 +479,6 @@ aside {
     transform: translateY(0);
 }
 
-/* Mensajes de resultado del formulario */
 .form-msg {
     display: none;
     padding: 12px 16px;
@@ -549,7 +499,6 @@ aside {
     border: 1px solid #f1aeb5;
 }
 
-/* Lista de inscritos */
 .lista-inscritos {
     margin-top: 24px;
     background: var(--background-light);
@@ -577,9 +526,6 @@ aside {
     color: var(--text-light);
 }
 
-/* ============================================================
-   TOAST / NOTIFICACIÓN
-   ============================================================ */
 .toast {
     position: fixed;
     bottom: 24px;
@@ -602,9 +548,6 @@ aside {
     transform: translateY(0);
 }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
 footer {
     text-align: center;
     padding: 28px 20px;
@@ -614,9 +557,7 @@ footer {
     font-size: 0.9rem;
 }
 
-footer p {
-    margin: 0 0 8px;
-}
+footer p { margin: 0 0 8px; }
 
 footer a {
     color: rgba(255,255,255,0.85);
@@ -629,9 +570,16 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* ============================================================
-   BOTÓN LOGIN EN EL HEADER
-   ============================================================ */
+.saludo-usuario {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: rgba(255,255,255,0.15);
+    padding: 8px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
 .btn-login-header {
     background: #fff;
     color: var(--primary-color);
@@ -651,11 +599,6 @@ footer a:hover {
     border-color: rgba(255,255,255,0.7);
 }
 
-/* ============================================================
-   MODAL LOGIN (overlay + caja)
-   ============================================================ */
-
-/* Overlay oscuro que cubre toda la página */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -673,7 +616,6 @@ footer a:hover {
     to   { opacity: 1; }
 }
 
-/* Caja blanca del modal */
 .modal-box {
     background: var(--form-bg);
     border-radius: 12px;
@@ -690,7 +632,6 @@ footer a:hover {
     to   { transform: translateY(0);    opacity: 1; }
 }
 
-/* Cabecera del modal */
 .modal-header {
     display: flex;
     align-items: center;
@@ -707,7 +648,6 @@ footer a:hover {
     color: var(--primary-color);
 }
 
-/* Botón cerrar (×) */
 .modal-cerrar {
     background: none;
     border: none;
@@ -723,13 +663,11 @@ footer a:hover {
     color: var(--text-light);
 }
 
-/* Botón ancho completo dentro del modal */
 .btn-form--full {
     width: 100%;
     text-align: center;
 }
 
-/* Texto pie del modal */
 .modal-footer-text {
     text-align: center;
     margin-top: 18px;
@@ -748,28 +686,17 @@ footer a:hover {
 }
 
 @media (max-width: 480px) {
-    .modal-box {
-        padding: 24px 18px;
-    }
+    .modal-box { padding: 24px 18px; }
 }
+
 @media (max-width: 600px) {
-    .carousel {
-        height: 220px;
-    }
-    .slide-caption h3 {
-        font-size: 1.1rem;
-    }
-    .form-section {
-        padding: 24px 18px;
-    }
-    .card {
-        width: 100%;
-    }
+    .carousel { height: 220px; }
+    .slide-caption h3 { font-size: 1.1rem; }
+    .form-section { padding: 24px 18px; }
+    .card { width: 100%; }
     header {
         flex-direction: column;
         align-items: flex-start;
     }
-    .search input {
-        width: 100%;
-    }
+    .search input { width: 100%; }
 }
