@@ -149,7 +149,7 @@ function registrarUsuario() {
 
     const yaExiste = usuariosInscritos.some(u => u.email === email.trim().toLowerCase());
     if (yaExiste) {
-        mostrarMensaje("msg-inscripcion", "⚠️ Este correo ya está registrado.", "error");
+        mostrarMensaje("msg-inscripcion", "Este correo ya está registrado.", "error");
         return;
     }
 
@@ -209,26 +209,11 @@ function iniciarSesion() {
         if (btnLogin)    btnLogin.style.display    = "none";
         if (btnRegistro) btnRegistro.style.display = "none";
     } else {
-        mostrarMensaje("msg-login", "❌ Credenciales incorrectas. Verifica tu correo y contraseña.", "error");
+        mostrarMensaje("msg-login", "Contraseña o correo incorrecto.", "error");
     }
 }
 
-function enviarContacto() {
-    const nombre  = document.getElementById("cont-nombre").value;
-    const email   = document.getElementById("cont-email").value;
-    const mensaje = document.getElementById("cont-mensaje").value;
 
-    const reglas = [
-        { valor: nombre,  idError: "error-cont-nombre",  mensaje: "El nombre no puede estar vacío.",      validacion: validarCampoVacio },
-        { valor: email,   idError: "error-cont-email",   mensaje: "Ingresa un correo electrónico válido.", validacion: validarEmail },
-        { valor: mensaje, idError: "error-cont-mensaje", mensaje: "El mensaje no puede estar vacío.",      validacion: validarCampoVacio }
-    ];
-
-    if (!validarDatos(reglas)) return;
-
-    mostrarMensaje("msg-contacto", "✅ Mensaje enviado. Te responderemos dentro de 24 horas.", "exito");
-    document.getElementById("form-contacto").reset();
-}
 
 function agregarAlCarrito(nombre, precio) {
     carrito.push({ nombre, precio, cantidad: 1 });
